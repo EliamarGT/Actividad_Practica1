@@ -5,17 +5,39 @@
  */
 package Ejercicio2;
 
+import java.awt.Graphics;
+import java.awt.Image;
+import javax.swing.ImageIcon;
+import javax.swing.JOptionPane;
+import javax.swing.JPanel;
+
 /**
  *
  * @author ELIAMAR GOMEZ
  */
 public class PruebaCuenta extends javax.swing.JFrame {
 
-    /**
-     * Creates new form PruebaCuenta
-     */
+    Persona obj1 = new Persona("504240474","Normal") {};
+    Cuenta array1[] = new Cuenta[2];
+
     public PruebaCuenta() {
         initComponents();
+        this.setLocationRelativeTo(this);
+        setIconImage(new ImageIcon(getClass().getResource("/Iconos/bcr.png")).getImage());
+        
+        //--------------------- CUENTAS ASOCIADAS AL USUARIO -------------------
+        array1[0] = new Cuenta(0,"504240474","Normal");
+        array1[1] = new Cuenta(700,"504240474","Normal");
+        
+        btnConsultar.setEnabled(false);
+        btnPagar.setEnabled(false);
+        btnConsultar2.setEnabled(false);
+        
+        lblEstado.setVisible(false);
+        lblEstado1.setVisible(false);
+        lblEstado2.setVisible(false);
+        
+        txtMonto.setEnabled(false);
     }
 
     /**
@@ -27,21 +49,277 @@ public class PruebaCuenta extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        PANEL1 = new javax.swing.JPanel();
+        PANEL2 = new FondoPanel();
+        jLabel1 = new javax.swing.JLabel();
+        jLabel2 = new javax.swing.JLabel();
+        txtCuenta = new javax.swing.JTextField();
+        btnVerificar = new javax.swing.JButton();
+        jPanel1 = new javax.swing.JPanel();
+        jLabel3 = new javax.swing.JLabel();
+        txtMonto = new javax.swing.JTextField();
+        jLabel4 = new javax.swing.JLabel();
+        btnConsultar = new javax.swing.JButton();
+        lblEstado = new javax.swing.JLabel();
+        btnPagar = new javax.swing.JButton();
+        lblEstado1 = new javax.swing.JLabel();
+        btnConsultar2 = new javax.swing.JButton();
+        lblEstado2 = new javax.swing.JLabel();
+
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setTitle("CUENTAS BANCARIAS");
+        addWindowListener(new java.awt.event.WindowAdapter() {
+            public void windowActivated(java.awt.event.WindowEvent evt) {
+                formWindowActivated(evt);
+            }
+            public void windowClosed(java.awt.event.WindowEvent evt) {
+                formWindowClosed(evt);
+            }
+        });
+
+        PANEL1.setBackground(new java.awt.Color(255, 255, 255));
+        PANEL1.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(204, 0, 0), 2));
+
+        PANEL2.setBackground(new java.awt.Color(255, 255, 255));
+        PANEL2.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(204, 0, 0), 2));
+
+        javax.swing.GroupLayout PANEL2Layout = new javax.swing.GroupLayout(PANEL2);
+        PANEL2.setLayout(PANEL2Layout);
+        PANEL2Layout.setHorizontalGroup(
+            PANEL2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 0, Short.MAX_VALUE)
+        );
+        PANEL2Layout.setVerticalGroup(
+            PANEL2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 140, Short.MAX_VALUE)
+        );
+
+        jLabel1.setFont(new java.awt.Font("Copperplate Gothic Light", 0, 14)); // NOI18N
+        jLabel1.setText("CUENTA # 1  > > > > > > > > > ");
+
+        jLabel2.setFont(new java.awt.Font("Copperplate Gothic Light", 1, 18)); // NOI18N
+        jLabel2.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabel2.setText("FORMULARIO");
+
+        txtCuenta.setFont(new java.awt.Font("Copperplate Gothic Light", 0, 14)); // NOI18N
+        txtCuenta.setHorizontalAlignment(javax.swing.JTextField.CENTER);
+
+        btnVerificar.setFont(new java.awt.Font("Copperplate Gothic Light", 0, 14)); // NOI18N
+        btnVerificar.setText("VERIFICAR");
+        btnVerificar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnVerificarActionPerformed(evt);
+            }
+        });
+
+        jPanel1.setBackground(new java.awt.Color(255, 255, 255));
+        jPanel1.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(204, 0, 0), 2));
+
+        javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
+        jPanel1.setLayout(jPanel1Layout);
+        jPanel1Layout.setHorizontalGroup(
+            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 0, Short.MAX_VALUE)
+        );
+        jPanel1Layout.setVerticalGroup(
+            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 39, Short.MAX_VALUE)
+        );
+
+        jLabel3.setFont(new java.awt.Font("Copperplate Gothic Light", 0, 14)); // NOI18N
+        jLabel3.setText("CUENTA # 2  > > mONTO PENDIENTE DE ALQUILER :");
+
+        txtMonto.setFont(new java.awt.Font("Copperplate Gothic Light", 0, 14)); // NOI18N
+        txtMonto.setHorizontalAlignment(javax.swing.JTextField.CENTER);
+        txtMonto.setText("750");
+
+        jLabel4.setFont(new java.awt.Font("Copperplate Gothic Light", 0, 14)); // NOI18N
+        jLabel4.setText("USD");
+
+        btnConsultar.setFont(new java.awt.Font("Copperplate Gothic Light", 0, 14)); // NOI18N
+        btnConsultar.setText("CONSULTAR ESTADO CUENTA 1");
+        btnConsultar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnConsultarActionPerformed(evt);
+            }
+        });
+
+        lblEstado.setFont(new java.awt.Font("Copperplate Gothic Light", 0, 14)); // NOI18N
+
+        btnPagar.setFont(new java.awt.Font("Copperplate Gothic Light", 0, 14)); // NOI18N
+        btnPagar.setText("PAGAR DEUDA DE CUENTA 2");
+        btnPagar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnPagarActionPerformed(evt);
+            }
+        });
+
+        lblEstado1.setFont(new java.awt.Font("Copperplate Gothic Light", 0, 14)); // NOI18N
+
+        btnConsultar2.setFont(new java.awt.Font("Copperplate Gothic Light", 0, 14)); // NOI18N
+        btnConsultar2.setText("ESTADO AL REALIZAR TRANSFERENCIA");
+        btnConsultar2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnConsultar2ActionPerformed(evt);
+            }
+        });
+
+        lblEstado2.setFont(new java.awt.Font("Copperplate Gothic Light", 0, 14)); // NOI18N
+        lblEstado2.setText(" X X X X X X X ");
+
+        javax.swing.GroupLayout PANEL1Layout = new javax.swing.GroupLayout(PANEL1);
+        PANEL1.setLayout(PANEL1Layout);
+        PANEL1Layout.setHorizontalGroup(
+            PANEL1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(PANEL2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addGroup(PANEL1Layout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addGroup(PANEL1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, PANEL1Layout.createSequentialGroup()
+                        .addGroup(PANEL1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, PANEL1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                                .addGroup(PANEL1Layout.createSequentialGroup()
+                                    .addComponent(jLabel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                    .addGap(18, 18, 18)
+                                    .addComponent(txtCuenta, javax.swing.GroupLayout.PREFERRED_SIZE, 142, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addComponent(jLabel3, javax.swing.GroupLayout.Alignment.LEADING))
+                            .addComponent(jLabel2, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 142, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(30, 30, 30)
+                        .addGroup(PANEL1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addComponent(txtMonto, javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addComponent(btnVerificar, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, PANEL1Layout.createSequentialGroup()
+                        .addGroup(PANEL1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                            .addComponent(btnConsultar, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(btnConsultar2, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(btnPagar, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                        .addGap(50, 50, 50)
+                        .addGroup(PANEL1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(lblEstado2, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 113, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(lblEstado1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 113, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(lblEstado, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 113, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jLabel4)
+                .addContainerGap(27, Short.MAX_VALUE))
+        );
+        PANEL1Layout.setVerticalGroup(
+            PANEL1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(PANEL1Layout.createSequentialGroup()
+                .addComponent(PANEL2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 43, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18)
+                .addGroup(PANEL1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(txtCuenta, javax.swing.GroupLayout.PREFERRED_SIZE, 24, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 26, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(btnVerificar))
+                .addGap(44, 44, 44)
+                .addGroup(PANEL1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 24, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(txtMonto, javax.swing.GroupLayout.PREFERRED_SIZE, 24, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel4, javax.swing.GroupLayout.PREFERRED_SIZE, 26, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(46, 46, 46)
+                .addGroup(PANEL1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(lblEstado, javax.swing.GroupLayout.PREFERRED_SIZE, 26, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(btnConsultar))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 55, Short.MAX_VALUE)
+                .addGroup(PANEL1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(lblEstado1, javax.swing.GroupLayout.PREFERRED_SIZE, 26, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(btnPagar))
+                .addGap(56, 56, 56)
+                .addGroup(PANEL1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(PANEL1Layout.createSequentialGroup()
+                        .addComponent(btnConsultar2)
+                        .addGap(18, 18, 18)
+                        .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(lblEstado2, javax.swing.GroupLayout.PREFERRED_SIZE, 26, javax.swing.GroupLayout.PREFERRED_SIZE)))
+        );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 400, Short.MAX_VALUE)
+            .addComponent(PANEL1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 300, Short.MAX_VALUE)
+            .addComponent(PANEL1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void formWindowActivated(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowActivated
+        try{
+            lblEstado.setText(array1[0].getEstado());
+            lblEstado1.setText(array1[1].getEstado());
+        }catch(Exception e){}
+     
+    }//GEN-LAST:event_formWindowActivated
+
+    private void formWindowClosed(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowClosed
+        
+    }//GEN-LAST:event_formWindowClosed
+
+    private void btnVerificarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnVerificarActionPerformed
+       
+        if("1100".equals(txtCuenta.getText())){
+            array1[0].setSaldo1(Long.parseLong(txtCuenta.getText()));
+            txtCuenta.setEnabled(false);
+            btnVerificar.setEnabled(false);
+            
+            btnConsultar.setEnabled(true);
+            btnPagar.setEnabled(true);
+            
+        }else{
+            JOptionPane.showMessageDialog(null,"DEBE INTRODUCIR LA CANTIDAD 1100");
+            txtCuenta.setText("");
+            txtCuenta.requestFocus();
+        }
+       
+        
+    }//GEN-LAST:event_btnVerificarActionPerformed
+
+    private void btnConsultarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnConsultarActionPerformed
+        lblEstado.setVisible(true);
+        lblEstado.setText(String.valueOf(array1[0].getEstado()));
+      
+    }//GEN-LAST:event_btnConsultarActionPerformed
+
+    private void btnPagarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnPagarActionPerformed
+        
+        long num;
+        num = array1[1].getSaldo1() - 750;
+        array1[1].setSaldo1(num);
+        
+        if(array1[1].verificarEstado() == true){
+            array1[1].setEstado("Moroso");
+            lblEstado1.setVisible(true);
+            lblEstado1.setText(String.valueOf(array1[1].getEstado()));
+            btnConsultar2.setEnabled(true);
+            
+        }else{
+            lblEstado1.setText(String.valueOf(array1[1].getEstado()));
+        }
+        
+    }//GEN-LAST:event_btnPagarActionPerformed
+
+    private void btnConsultar2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnConsultar2ActionPerformed
+        long num1;
+        num1 = array1[0].getSaldo1() + array1[1].getSaldo1();
+        array1[1].setSaldo1(num1);
+        
+        if(array1[1].verificarEstado() == false){
+            array1[1].setEstado("Normal");
+            lblEstado2.setText(String.valueOf(array1[1].getEstado()));
+            lblEstado2.setVisible(true);
+        }else{
+            lblEstado2.setText("X X X X X");
+        }
+        
+        
+    }//GEN-LAST:event_btnConsultar2ActionPerformed
 
     /**
      * @param args the command line arguments
@@ -79,5 +357,39 @@ public class PruebaCuenta extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JPanel PANEL1;
+    private javax.swing.JPanel PANEL2;
+    private javax.swing.JButton btnConsultar;
+    private javax.swing.JButton btnConsultar2;
+    private javax.swing.JButton btnPagar;
+    private javax.swing.JButton btnVerificar;
+    private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel2;
+    private javax.swing.JLabel jLabel3;
+    private javax.swing.JLabel jLabel4;
+    private javax.swing.JPanel jPanel1;
+    private javax.swing.JLabel lblEstado;
+    private javax.swing.JLabel lblEstado1;
+    private javax.swing.JLabel lblEstado2;
+    private javax.swing.JTextField txtCuenta;
+    private javax.swing.JTextField txtMonto;
     // End of variables declaration//GEN-END:variables
+class FondoPanel extends JPanel
+    {
+        
+        private Image imagen;
+        
+        @Override
+        public void paint(Graphics g)
+        {
+            imagen = new ImageIcon(getClass().getResource("/Iconos/logo.png")).getImage();
+            
+            g.drawImage(imagen,0, 0, getWidth(),getHeight(),this);
+            
+            setOpaque(false);
+            
+            super.paint(g);
+        }
+    } 
+
 }
